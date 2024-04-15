@@ -13,8 +13,7 @@ async def ping_pong(websocket):
             print("received PONG, answering PING")
             await websocket.send("ping")
         else:
-            print(msg_in)
-            await websocket.send("unknown")
+            continue
 
 
 async def main():

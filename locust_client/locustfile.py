@@ -16,11 +16,8 @@ class WsUser(SocketIOUser):
         self.sleep_with_heartbeat(10)
 
     def send(self, body, name=None, context={}, opcode=websocket.ABNF.OPCODE_TEXT):
-        if not name:
-            if body == "2":
-                name = "2 heartbeat"
-            else:
-                name = ""
+        if name is None:
+            name = ""
         self.environment.events.request.fire(
             request_type="WSS",
             name=name,
